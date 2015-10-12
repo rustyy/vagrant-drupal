@@ -8,7 +8,7 @@ else
 end
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = $box
 
   # setup virtual hostname and provision local IP
   config.vm.network :private_network, :ip => $ip
@@ -18,8 +18,8 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "./../htdocs", "/var/www"
 
   # Port forwarding.
-  config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 443, host: 8443
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  # config.vm.network "forwarded_port", guest: 443, host: 8443
 
   # Update vagrant bashrc.
   config.vm.provision :shell, path: "provision/shell/bashrc_update.sh"
