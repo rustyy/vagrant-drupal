@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 if File.exist?('../vagrant.config.rb')
-  require_relative 'vagrant.config.rb'
+  require_relative '../vagrant.config.rb'
 else
   require_relative 'example.config.rb'
 end
