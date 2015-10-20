@@ -1,10 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-if File.exist?('../vagrant.config.rb')
-  require_relative '../vagrant.config.rb'
-else
-  require_relative 'example.config.rb'
+require_relative 'example.config.rb'
+
+if File.exist?('vagrant.config.rb')
+  require_relative 'vagrant.config.rb'
 end
 
 Vagrant.configure("2") do |config|
@@ -14,8 +14,10 @@ Vagrant.configure("2") do |config|
   config.vm.network :private_network, :ip => $ip
   config.vm.hostname = $hostname
 
-  # Setup project folder.
-  config.vm.synced_folder "./../htdocs", "/var/www"
+  # Setup synced folders as defined in (vagrant./example.)config.rb.
+  $synced_folders.each do |folder|
+    config.vm.synced_folder folder[0],folder[1]
+  end
 
   # Port forwarding.
   # config.vm.network "forwarded_port", guest: 80, host: 8080

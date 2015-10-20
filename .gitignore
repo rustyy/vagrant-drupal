@@ -7,6 +7,9 @@ gen
 # Vagrant files
 .vagrant/
 
+# Ignore custom vagrant config file
+vagrant.config.rb
+
 # misc
 .DS_Store
 Thumbs.db
