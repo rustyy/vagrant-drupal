@@ -5,6 +5,8 @@ require_relative 'example.config.rb'
 
 if File.exist?('vagrant.config.rb')
   require_relative 'vagrant.config.rb'
+elsif File.exist?('../vagrant.config.rb')
+  require_relative '../vagrant.config.rb'
 end
 
 Vagrant.configure("2") do |config|
