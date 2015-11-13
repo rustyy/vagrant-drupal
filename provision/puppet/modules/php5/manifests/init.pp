@@ -30,6 +30,13 @@ class php5 {
     target  => '/vagrant/provision/files/php5/php.ini',
   }
 
+  file { 'php.ini cli':
+    ensure  => 'link',
+    path    => '/etc/php5/cli/conf.d/vagrant_php.ini',
+    require => Package['php5'],
+    target  => '/vagrant/provision/files/php5/php.ini',
+  }
+
   file { 'xdebug.ini':
     ensure  => 'link',
     path    => '/etc/php5/apache2/conf.d/xdebug.ini',
