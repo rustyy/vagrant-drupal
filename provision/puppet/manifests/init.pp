@@ -22,3 +22,4 @@ class { 'mysql': }
 class { 'phpmyadmin': }
 class { 'composer': }
 class { 'drush': }
+class { 'ruby-compass': }
